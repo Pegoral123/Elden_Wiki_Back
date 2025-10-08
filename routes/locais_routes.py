@@ -13,6 +13,7 @@ def get_limgrave():
 }
     return limgrave_info
 
+
 @router.get("/liurnia")
 
 def get_liurnia():
