@@ -39,3 +39,21 @@ The backend is responsible for providing a REST API to serve data to the fronten
 1. Clone this repository:
    ```bash
    git clone https://github.com/Pegoral123/Elden_Wiki_Back.git
+
+2. **Navigate to the project directory:**
+   ```bash
+    cd Elden_Wiki_Back
+
+3. **(Optional but recommended) Create a virtual environment:**
+   ```bash
+    python -m venv venv
+    source venv/bin/activate   # Linux/macOS
+    venv\Scripts\activate      # Windows
+   
+4. **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    
+5. **Start the backend server:**
+    ```bash
+    uvicorn main:app --reaload
