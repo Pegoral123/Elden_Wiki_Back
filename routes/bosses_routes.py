@@ -14,8 +14,8 @@ def get_bosses():
     else:
         raise HTTPException(status_code=500, detail="Erro ao buscar os dados dos bosses")  
 
-@router.get("/{boss_name}")
-def get_boss_by_name(boss_name: str):
+@router.get("/limgrave_boss")
+def get_limgrave_boss():
     bosses = [
         {
             "id": 1,
@@ -30,8 +30,8 @@ def get_boss_by_name(boss_name: str):
             "Postura": 80,
             "Resistencia": "Dano Sagrado",
             "Fraqueza": "Corte",
-            "Recompensa": "Bolsa de Talismã"
-            
+            "Recompensa": "Bolsa de Talismã",
+            "image": "/static/margit_foto.jpg"
         },
         {
             "id": 2,
@@ -46,8 +46,19 @@ def get_boss_by_name(boss_name: str):
             "Postura": 105,
             "Resistencia": "Dano Sagrado",
             "Fraqueza": "Padrão, Corte, Golpear e Perfurar",
-            "Recompensa": "A Grande Runa de Godrick"
+            "Recompensa": "A Grande Runa de Godrick",
+            "image": "/static/godrick_foto.jpg" 
         },
+        
+    ]
+    if not bosses:
+        raise HTTPException(status_code=404, detail="Nenhum boss encontrado em Limgrave")
+    return bosses
+
+
+@router.get("/caelid_boss")
+def get_caelid_boss():
+    bosses = [
         {
             "id": 3,
             "name": "Radahn, o Flagelo Estelar",
@@ -63,11 +74,7 @@ def get_boss_by_name(boss_name: str):
             "Fraqueza": "Perfurar, Podridão Escarlate",
             "Recompensa": "A Grande Runa de Radahn"
         },
+        
     ]
+    return bosses
 
-    for boss in bosses:
-        if boss["name"].lower() == boss_name.lower() or str(boss["id"]) == boss_name:
-            return boss
-
-    # Retorna um erro 404 se o boss não for encontrado
-    raise HTTPException(status_code=404, detail="Boss não encontrado")
