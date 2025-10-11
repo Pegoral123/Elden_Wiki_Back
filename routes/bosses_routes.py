@@ -31,7 +31,7 @@ def get_limgrave_boss():
             "Resistencia": "Dano Sagrado",
             "Fraqueza": "Corte",
             "Recompensa": "Bolsa de Talismã",
-            "image": "/static/margit_foto.jpg"
+            "image": "http://localhost:8000/static/margit_foto.jpg"
         },
         {
             "id": 2,
@@ -47,7 +47,7 @@ def get_limgrave_boss():
             "Resistencia": "Dano Sagrado",
             "Fraqueza": "Padrão, Corte, Golpear e Perfurar",
             "Recompensa": "A Grande Runa de Godrick",
-            "image": "/static/godrick_foto.jpg" 
+            "image": "http://localhost:8000/static/godrick_foto.jpg" 
         },
         
     ]
