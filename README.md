@@ -47,7 +47,6 @@ The backend is responsible for providing a REST API to serve data to the fronten
 3. **Create a virtual environment:**
    ```bash
     python -m venv venv
-    
    
 4. **Install the dependencies:**
     ```bash
