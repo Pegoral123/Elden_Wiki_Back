@@ -3,14 +3,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from routes import locais_routes, bosses_routes
+from router import locais_router, bosses_router, data_router
 
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-app.include_router(locais_routes.router)
-app.include_router(bosses_routes.router)
+app.include_router(locais_router.router)
+app.include_router(bosses_router.router)
+app.include_router(data_router.router)
 
 app.add_middleware(
     CORSMiddleware,
