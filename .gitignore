@@ -1,5 +1,5 @@
-**/.venv
-back_end/.venv
-back_end/__pycache__/
-**/back_end/__pycache__/
-node_modules
+.venv/
+__pycache__/
+node_modules/
+data/serviceAccountKey.json
+arquivo.env

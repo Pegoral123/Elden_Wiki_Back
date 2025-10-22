@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-import requests  # Corrigido: Importação do módulo requests
+import requests  
 
 router = APIRouter(prefix="/bosses", tags=["Bosses"])
 
