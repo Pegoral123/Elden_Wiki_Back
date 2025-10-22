@@ -49,6 +49,23 @@ def get_limgrave_boss():
             "Recompensa": "A Grande Runa de Godrick",
             "image": "http://localhost:8000/static/godrick_foto.jpg" 
         },
+
+        {
+            "id": 3,
+            "name": "Cavaleiro Cão de Caça Darriwil",
+            "location": "Cão Desamparado Evergaol",
+            "description": (
+                "O Cavaleiro Cão de Caça é um chefe opcional em Elden Ring, mas bastante conhecido pelos novatos por dropar a arma Presa do Cão de Caça, uma das favoritas de muitos por sua versatilidade e excelente Cinza de Guerra. Ele também faz parte da linha de missões do Blaidd, então é recomendado falar com ele antes de enfrentar o chefe para receber sua ajuda na luta. "
+            ),
+            "Saúde": 1.450,
+            "Defesa": 103.9,
+            "Postura": 66,
+            "Resistencia": "Ataque Padrão",
+            "Fraqueza": "Raio",
+            "Recompensa": "Presa do Cão de Caça",
+            "image": "http://localhost:8000/static/caoCaca_foto.jpg"
+        },
+        
         
     ]
     if not bosses:
@@ -60,7 +77,7 @@ def get_limgrave_boss():
 def get_caelid_boss():
     bosses = [
         {
-            "id": 3,
+            "id": 1,
             "name": "Radahn, o Flagelo Estelar",
             "location": "Caelid",
             "description": (
@@ -72,8 +89,40 @@ def get_caelid_boss():
             "Postura": 200,
             "Resistencia": "Dano Sagrado, Dormir",
             "Fraqueza": "Perfurar, Podridão Escarlate",
-            "Recompensa": "A Grande Runa de Radahn"
+            "Recompensa": "A Grande Runa de Radahn",
+            "image": "http://localhost:8000/static/radahn_foto.jpg"
         },
+        {
+            "id": 2,
+            "name": "Comandante O'Neil",
+            "location": "Pântano de Aeonia",
+            "description": (
+                "O Comandante O’Neil é um Grande Chefe Inimigo em Elden Ring, encontrado no coração da região tomada pela Podridão Escarlate."
+            ),
+            "Saúde": 9.210,
+            "Defesa": 111,
+            "Postura": 90,
+            "Resistencia": "Barra, IMUNE A PODRIDÃO ESCARLATE",
+            "Fraqueza": "Perfurar",
+            "Recompensa": "Estandarte do comandate Agulha de ouro sem liga",
+            "image": "http://localhost:8000/static/comandanteONeil_foto.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Ekzykes em decomposição",
+            "location": "Caelid Highway South",
+            "description": (
+                "Ekzykes, o Vingador da Comunhão do Dragão, é uma figura trágica e aterradora no mundo de Elden Ring. Antigo cavaleiro da Comunhão do Dragão, Ekzykes foi um dos poucos humanos que ousaram buscar o poder ancestral dos dragões antigos."
+            ),
+            "Saúde": 23.731,
+            "Defesa": 114,
+            "Postura": 120,
+            "Resistencia": "Podridão Escarlate e Veneno",
+            "Fraqueza": "Fraco para todos tipos de dano",
+            "Recompensa": "Coração do Dragão",
+            "image": "http://localhost:8000/static/ekzykes_foto.jpg"
+        },
+        
         
     ]
     return bosses

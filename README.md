@@ -44,11 +44,9 @@ The backend is responsible for providing a REST API to serve data to the fronten
    ```bash
     cd Elden_Wiki_Back
 
-3. **(Optional but recommended) Create a virtual environment:**
+3. **Create a virtual environment:**
    ```bash
     python -m venv venv
-    source venv/bin/activate   # Linux/macOS
-    venv\Scripts\activate      # Windows
    
 4. **Install the dependencies:**
     ```bash
