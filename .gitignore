@@ -1,6 +1,6 @@
 .venv/
 node_modules/
-data/serviceAccountKey.json
+config/ServiceAccountKey.json
 arquivo.env
 __pycache__/
 router/__pycache__/
