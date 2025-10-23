@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/locais", tags=["Locais"])
+router = APIRouter(prefix="/locations", tags=["Locations"])
 
 
 @router.get("/limgrave")

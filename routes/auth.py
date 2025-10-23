@@ -1,4 +1,3 @@
-# routes/auth_routes.py
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, EmailStr
 import os

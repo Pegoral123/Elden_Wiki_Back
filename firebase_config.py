@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SERVICE_ACCOUNT_PATH = os.path.join(os.path.dirname(__file__), "data", "serviceAccountKey.json")
+SERVICE_ACCOUNT_PATH = os.path.join(os.path.dirname(__file__), "config", "serviceAccountKey.json")
 
 def init_firebase():
     # inicializa apenas uma vez

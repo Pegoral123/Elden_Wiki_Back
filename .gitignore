@@ -1,5 +1,7 @@
 .venv/
-__pycache__/
 node_modules/
 data/serviceAccountKey.json
 arquivo.env
+__pycache__/
+router/__pycache__/
+routes/__pycache__/

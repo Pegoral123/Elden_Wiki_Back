@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 import requests  
 
-router = APIRouter(prefix="/bosses", tags=["Bosses"])
+router = APIRouter(prefix="/boss", tags=["Bosses"])
 
 @router.get("/")
 def get_bosses():
@@ -14,7 +14,7 @@ def get_bosses():
     else:
         raise HTTPException(status_code=500, detail="Erro ao buscar os dados dos bosses")  
 
-@router.get("/limgrave_boss")
+@router.get("/limgrave_bosses")
 def get_limgrave_boss():
     bosses = [
         {
@@ -73,7 +73,7 @@ def get_limgrave_boss():
     return bosses
 
 
-@router.get("/caelid_boss")
+@router.get("/caelid_bosses")
 def get_caelid_boss():
     bosses = [
         {
