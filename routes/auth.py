@@ -14,6 +14,7 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 class RegisterModel(BaseModel):
     email: EmailStr
     password: str
+    name: str
 
 class LoginModel(BaseModel):
     email: EmailStr
@@ -22,8 +23,8 @@ class LoginModel(BaseModel):
 @router.post("/register")
 def register(payload: RegisterModel):
     try:
-        user = create_user(email=payload.email, password=payload.password)
-        return {"uid": user.uid, "email": user.email}
+        user = create_user(email=payload.email, display_name=payload.name, password=payload.password)
+        return {"uid": user.uid, "email": user.email, "name": user.display_name}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

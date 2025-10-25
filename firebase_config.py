@@ -17,8 +17,8 @@ def init_firebase():
         # em dev pode imprimir; em produção usar logging
         print("Erro ao inicializar Firebase Admin:", e)
 
-def create_user(email: str, password: str):
-    return auth.create_user(email=email, password=password)
+def create_user(email: str, password: str, display_name: str = None):
+    return auth.create_user(email=email, password=password, display_name=display_name)
 
 def verify_id_token(id_token: str):
     return auth.verify_id_token(id_token)
