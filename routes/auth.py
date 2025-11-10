@@ -24,7 +24,26 @@ class LoginModel(BaseModel):
 def register(payload: RegisterModel):
     try:
         user = create_user(email=payload.email, display_name=payload.name, password=payload.password)
-        return {"uid": user.uid, "email": user.email, "name": user.display_name}
+        login_url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={API_KEY}"
+        login_body = {
+            "email": payload.email,
+            "password": payload.password,
+            "returnSecureToken": True
+        }
+        login_resp = requests.post(login_url, json=login_body)
+
+        if login_resp.status_code != 200:
+            raise HTTPException(status_code=401, detail=login_resp.json())
+
+        token_data = login_resp.json()
+        return {
+            "uid": user.uid,
+            "email": user.email,
+            "name": user.display_name,
+            "idToken": token_data.get("idToken"),
+            "refreshToken": token_data.get("refreshToken"),
+            "expiresIn": token_data.get("expiresIn")
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
