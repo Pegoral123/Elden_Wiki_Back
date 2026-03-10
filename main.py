@@ -10,16 +10,14 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
-
 app.include_router(locations.router)
 app.include_router(bosses.router)
 app.include_router(auth.router)
 
 origins = [
-    "http://localhost:5173",  # A origem do seu app Vue
+    "http://localhost:5173",  # A origem do app Vue
     "http://127.0.0.1:5173", 
-    "http://localhost:8080",# Adicione variações se necessário
-]
+    "http://localhost:8080",]
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,10 +27,10 @@ app.add_middleware(
     allow_headers=["*", "Authorization"],
 )
 
+
 @app.get("/")
 def raiz_root():
-    return {"Bem-vindo à ELDEN WIKI!"}
-
+    return {"message": "Bem-vindo à ELDEN WIKI!"}
 
 
 
