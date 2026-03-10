@@ -11,26 +11,36 @@ init_firebase()
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
+
 class RegisterModel(BaseModel):
     email: EmailStr
     password: str
     name: str
 
+
 class LoginModel(BaseModel):
     email: EmailStr
     password: str
 
+
 @router.post("/register")
 def register(payload: RegisterModel):
     try:
-        user = create_user(email=payload.email, display_name=payload.name, password=payload.password)
-        login_url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={API_KEY}"
+        user = create_user(
+            email=payload.email,
+            display_name=payload.name,
+            password=payload.password,
+        )
+        login_url = (
+            "https://identitytoolkit.googleapis.com/v1/"
+            f"accounts:signInWithPassword?key={API_KEY}"
+        )
         login_body = {
             "email": payload.email,
             "password": payload.password,
-            "returnSecureToken": True
+            "returnSecureToken": True,
         }
-        login_resp = requests.post(login_url, json=login_body)
+        login_resp = requests.post(login_url, json=login_body, timeout=10)
 
         if login_resp.status_code != 200:
             raise HTTPException(status_code=401, detail=login_resp.json())
@@ -42,21 +52,34 @@ def register(payload: RegisterModel):
             "name": user.display_name,
             "idToken": token_data.get("idToken"),
             "refreshToken": token_data.get("refreshToken"),
-            "expiresIn": token_data.get("expiresIn")
+            "expiresIn": token_data.get("expiresIn"),
         }
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=400, detail=str(e)) from e
+
 
 @router.post("/login")
 def login(payload: LoginModel):
     if not API_KEY:
-        raise HTTPException(status_code=500, detail="FIREBASE_API_KEY não configurada")
-    url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={API_KEY}"
-    body = {"email": payload.email, "password": payload.password, "returnSecureToken": True}
-    resp = requests.post(url, json=body)
+        raise HTTPException(
+            status_code=500,
+            detail="FIREBASE_API_KEY não configurada",
+        )
+    url = (
+        "https://identitytoolkit.googleapis.com/v1/"
+        f"accounts:signInWithPassword?key={API_KEY}"
+    )
+    body = {
+        "email": payload.email,
+        "password": payload.password,
+        "returnSecureToken": True,
+    }
+    resp = requests.post(url, json=body, timeout=10)
     if resp.status_code != 200:
         raise HTTPException(status_code=401, detail=resp.json())
-    return resp.json()  # contém idToken, refreshToken, expiresIn, localId (uid)
+    # Contem idToken, refreshToken, expiresIn e localId (uid).
+    return resp.json()
+
 
 @router.post("/verify_token")
 async def verify_token(request: Request):
@@ -68,4 +91,4 @@ async def verify_token(request: Request):
         decoded = verify_id_token(id_token)
         return {"uid": decoded.get("uid"), "email": decoded.get("email")}
     except Exception as e:
-        raise HTTPException(status_code=401, detail=str(e))
+        raise HTTPException(status_code=401, detail=str(e)) from e
